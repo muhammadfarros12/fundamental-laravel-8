@@ -21,10 +21,17 @@ Route::get('/about', function (){
     return view('about');
 });
 
-Route::get('hello', function(){
+Route::get('/hello', function(){
     $dataArray = [
         'message' => 'Hello World'
     ];
     return response() -> json($dataArray);
+});
+
+Route::get('/debug', function(){
+    $dataArray = [
+        'message' => 'Hello World'
+    ];
+    return ddd($dataArray);
 });
  

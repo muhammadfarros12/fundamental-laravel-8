@@ -40,7 +40,7 @@ $taskList = [
     'second' => 'Eat',
     'third' => 'Work'
 ];
-
+// http://localhost:8000/tasks?search=first
 Route::get('/tasks', function() use($taskList){
     //ddd(request()-> all());
     if (request()->search) {
@@ -52,4 +52,11 @@ Route::get('/tasks', function() use($taskList){
 
 Route::get('tasks/{param}', function($param) use($taskList){
     return $taskList[$param];
+});
+
+Route::post('/tasks', function() use ($taskList){
+    //return request() -> all();
+    $taskList[request() -> label] = request() -> task;
+
+    return $taskList;
 });

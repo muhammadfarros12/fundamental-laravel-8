@@ -39,9 +39,7 @@ Route::get('/debug', function(){
 // http://localhost:8000/tasks?search=first
 Route::get('/tasks', [TaskController::class, 'index']);
 
-// Route::get('tasks/{param}', function($param) use($taskList){
-//     return $taskList[$param];
-// });
+Route::get('tasks/{param}', [TaskController::class, 'show']);
 
 // Route::post('/tasks', function() use ($taskList){
 //     //return request() -> all();

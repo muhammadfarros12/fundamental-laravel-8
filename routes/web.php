@@ -32,29 +32,13 @@ Route::get('/debug', function(){
     $dataArray = [
         'message' => 'Hello World'
     ];
-    return ddd($dataArray);
+    return ddd($dataArray); 
 });
  
-
-// http://localhost:8000/tasks?search=first
+ 
 Route::get('/tasks', [TaskController::class, 'index']);
-
 Route::get('tasks/{param}', [TaskController::class, 'show']);
-
-// Route::post('/tasks', function() use ($taskList){
-//     //return request() -> all();
-//     $taskList[request() -> label] = request() -> task;
-
-//     return $taskList;
-// });
-
-// Route::patch('/tasks/{key}', function($key) use ($taskList){
-//     $taskList[$key] = request()-> task;
-//     return $taskList;
-// });
-
-// Route::delete('/tasks/{key}', function($key) use ($taskList){
-//     unset($taskList[$key]);
-//     return $taskList;
-// });
+Route::post('/tasks', [TaskController::class, 'store']);
+Route::patch('/tasks/{key}', [TaskController::class, 'update']);
+Route::delete('/tasks/{key}', [TaskController::class, 'delete']);
 

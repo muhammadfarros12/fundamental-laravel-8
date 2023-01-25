@@ -56,8 +56,10 @@ class TaskController extends Controller
     }
 
 
-    public function delete($key){
-        unset($this -> taskList[$key]);
-        return $this -> taskList;
+    public function delete($id){
+        $task = DB::table('tasks')
+        -> where('id', $id)
+        -> delete();
+        return 'success';
     }
 }

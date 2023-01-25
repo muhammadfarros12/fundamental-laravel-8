@@ -14,15 +14,24 @@ class TaskController extends Controller
     ];
 
     public function index(Request $request){
+        // if ($request->search) {
+        //     return $this -> taskList[$request->search];
+        // }
+        // return $this -> taskList;
         if ($request->search) {
-            return $this -> taskList[$request->search];
+            return $task = DB::table('tasks')
+            ->where('task', 'LIKE', "%$request->search%")
+            ->get();
+
+            return $task;
         }
-    
-        return $this -> taskList;
+        $task = DB::table('tasks')->get();
+        return $task;
     }
 
-    public function show($param) {
-        return $this->taskList[$param];
+    public function show($id) {
+        $task = DB::table('tasks')->where('id', $id)->first();
+         return ddd($task);
     }
 
     public function store(Request $request) {

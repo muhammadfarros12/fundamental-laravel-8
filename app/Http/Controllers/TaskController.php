@@ -44,9 +44,15 @@ class TaskController extends Controller
         return 'success';
     }
 
-    public function update(Request $request, $key){
-        $this -> taskList[$key] = $request -> task;
-        return $this -> taskList;
+    public function update(Request $request, $id){
+        // $this -> taskList[$key] = $request -> task;
+        // return $this -> taskList;
+        $task = DB::table('tasks')->where('id', $id)->update([
+            'task' => $request -> task,
+            'user' => $request -> user
+        ]);
+
+        return 'success';
     }
 
 

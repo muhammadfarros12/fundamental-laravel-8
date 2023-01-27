@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    private $taskList = [
-        'first' => 'sleep',
-        'second' => 'Eat',
-        'third' => 'Work'
-    ];
 
     public function index(Request $request){
         if ($request->search) {
@@ -31,12 +26,21 @@ class TaskController extends Controller
          return $task;
     }
 
+    public function create(){
+        return view('task.create');
+    }
+
     public function store(Request $request) {
         Task::create([
             'task' => $request->task,
             'user' => $request->user
         ]);
         return 'success';
+    }
+
+
+    public function edit($id){
+        return view('task.edit');
     }
 
     public function update(Request $request, $id){

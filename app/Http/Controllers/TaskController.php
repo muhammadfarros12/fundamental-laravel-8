@@ -16,12 +16,13 @@ class TaskController extends Controller
 
             return $task;
         }
-        $task = Task::all();
-        return $task;
+        $tasks = Task::all();
+        return view('task.index', [
+            'data' => $tasks
+        ]);
     }
 
     public function show($id) {
-        // $task = DB::table('tasks')->where('id', $id)->first();
         $task = Task::find($id);
          return $task;
     }

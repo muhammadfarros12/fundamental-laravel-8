@@ -2,6 +2,17 @@
 {{-- https://bit.ly/mastering-task-form --}}
 @section('main')
 <div class="mt-5 mx-auto" style="width: 380px">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <div class="card">
         <div class="card-body">
             <form action="{{ url("/tasks/$task->id") }}" method="POST">

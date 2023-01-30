@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 // php artisan make:request TaskRequest
@@ -24,8 +25,12 @@ class TaskRequest extends FormRequest
      */
     public function rules()
     {
+        $rule_task_unique = Rule::unique('tasks', 'task');
+        if($this->method() !== 'POST'){
+            $rule_task_unique->ignore($this->route()->parameter('id'));
+        }
         return [
-            'task' => ['required'],
+            'task' => ['required', $rule_task_unique],
             'user' => ['required']
         ];
     }

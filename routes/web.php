@@ -36,7 +36,8 @@ Route::get('/debug', function(){
 });
  
  
-Route::get('/tasks', [TaskController::class, 'index'])->middleware('is_admin');
+// Route::get('/tasks', [TaskController::class, 'index'])->middleware('auth');
+Route::get('/tasks', [TaskController::class, 'index']);
 Route::get('tasks/create', [TaskController::class, 'create']);
 Route::get('tasks/{id}', [TaskController::class, 'show']);
 Route::post('/tasks', [TaskController::class, 'store']);

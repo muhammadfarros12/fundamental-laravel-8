@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/fallianh0st6/belajar.ammaar.my.id/
+    - /bin/cp * $DEPLOYPATH
